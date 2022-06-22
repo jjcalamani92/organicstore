@@ -27,7 +27,7 @@ const UI_INITIAL_STATE: UiState = {
 		categories: [
 			{
 				_id: 'men',
-				name: 'ferreteria',
+				name: 'tienda',
 				imageSrc:"https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
 				featured: [
 					{
@@ -63,9 +63,7 @@ const UI_INITIAL_STATE: UiState = {
 				],
 			},
 		],
-		pages: [
-			{ _id: '2', name: 'linea automotiva', href: '/' },
-		],
+		pages: [],
 	}
 };
 

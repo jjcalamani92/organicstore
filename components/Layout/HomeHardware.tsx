@@ -19,7 +19,7 @@ export const HomeHardware = () => {
 					</h1>
 
 					<p className="max-w-lg mt-4 sm:leading-relaxed sm:text-xl">
-						Fierros es una ferretería que ofrece toda una gama de herramientas para arreglar los desperfectos del hogar.
+						Tu tienda online de frutas y verduras
 					</p>
 
 					<div className="flex flex-wrap gap-4 mt-8 text-center">
