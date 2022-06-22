@@ -44,17 +44,17 @@
 } */
 .swiper-button-prev {
 	/* left: 30; */
-	color: red !important;
+	color: lime !important;
 }
 .swiper-button-next {
 	/* left: 30; */
-	color: red !important;
+	color: lime !important;
 }
 .swiper-pagination-bullet {
-	background: red !important;
+	background: lime !important;
 }
 .swiper-pagination-bullet-active {
-	background: red !important;
+	background: lime !important;
 }
 
 .sk-chase {

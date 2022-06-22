@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Category,Section, IClothing, ISeo } from "../../../src/interfaces";
+import { Category,Section, IOrganic, ISeo } from "../../../src/interfaces";
 import React, { FC, useContext } from "react";
 import { SECTION } from "../../../src/gql/query";
 import { SBI } from "../../../src/gql/siteQuery";
@@ -29,8 +29,8 @@ const SectionPage:FC<Props> = ({seo, section}) => {
   );
 };
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const { clothingAll } = await graphQLClientP.request(SECTION , {site: `${process.env.API_SITE}`})
-  const paths = clothingAll.map((data:IClothing) => ({
+  const { organicAll } = await graphQLClientP.request(SECTION , {site: `${process.env.API_SITE}`})
+  const paths = organicAll.map((data:IOrganic) => ({
     params: data
   }))
   return {
@@ -76,7 +76,7 @@ export default SectionPage;
 
 // import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-// import { Category,Section, IClothing } from "../../../src/interfaces";
+// import { Category,Section, IOrganic } from "../../../src/interfaces";
 
 // import { client } from "../../../src/apollo";
 // import React from "react";
@@ -131,7 +131,7 @@ export default SectionPage;
 // 		query: SECTION,
 //     variables: { site: `${process.env.API_SITE}`},
 // 	});
-//   const paths = data.clothingAll.map((data:IClothing) => ({
+//   const paths = data.organicAll.map((data:IOrganic) => ({
 //     params: { category: data.category, section: data.section }
 //   })
 //   )

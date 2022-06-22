@@ -24,12 +24,12 @@ const AdminPage = () => {
 				<div className="my-6 container px-2 mx-auto flex flex-row lg:flex-row items-center lg:items-center justify-between ">
 					<h4 className="text-2xl font-bold leading-tight text-gray-800">Productos</h4>
 					<Link href="/admin/products/new">
-						<a  className="transition duration-150 ease-in-out hover:bg-red-600 focus:outline-none border bg-red-500 rounded text-white px-8 py-2 text-sm">Nuevo Producto</a>
+						<a  className="transition duration-150 ease-in-out hover:bg-lime-600 focus:outline-none border bg-lime-500 rounded text-white px-8 py-2 text-sm">Nuevo Producto</a>
 					</Link>
 				</div>
-				<Table02 products={data.clothingsAll} />
-				<LayoutItemListAdmin products={data.clothingsAll}/>
-				<Pagination01 setPage={setPage} page={page} length={data.clothingsAll.length} all={PAGE_SIZE} />
+				<Table02 products={data.organicsAll} />
+				<LayoutItemListAdmin products={data.organicsAll}/>
+				<Pagination01 setPage={setPage} page={page} length={data.organicsAll.length} all={PAGE_SIZE} />
 			</LayoutAdmin>
 		</>
 

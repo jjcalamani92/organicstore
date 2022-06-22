@@ -21,8 +21,7 @@ interface FormData {
   oldPrice: number;
   tags: string[];
 
-  sizes: string[];
-  color: string;
+  weight: string;
 }
 interface Props {
   product: FormData
@@ -140,12 +139,12 @@ export const FormHardware: FC<Props> = ({ product }) => {
   const onSubmit = async (form: FormData) => {
     const data = { ...form, price: Number(form.price), oldPrice: Number(form.oldPrice), inStock: Number(form.inStock), site: process.env.API_SITE }
     if (form._id) {
-      await axios.put(`${process.env.APIP_URL}/api/clothing/${product._id}`, data)
+      await axios.put(`${process.env.APIP_URL}/api/organic/${product._id}`, data)
       router.replace('/admin')
 
     } else {
       await axios.post(
-        `${process.env.APIP_URL}/api/clothing`, data);
+        `${process.env.APIP_URL}/api/organic`, data);
       router.replace(`/admin`)
     }
   }
@@ -190,7 +189,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         Nombre del Producto
                       </label>
                       <input
-                        className="mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm  rounded-md p-1 border border-gray-300"
+                        className="mt-2 focus:ring-lime-500 focus:border-lime-500 block w-full shadow-sm sm:text-sm  rounded-md p-1 border border-gray-300"
                         type={"text"}
                         {...register('name', {
                           required: 'Este campo es requerido',
@@ -198,7 +197,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         })}
                       />
                       <div>
-                        {errors.name && <span className="text-sm text-red-500">{errors.name.message}</span>}
+                        {errors.name && <span className="text-sm text-lime-500">{errors.name.message}</span>}
                       </div>
                     </div>
 
@@ -207,14 +206,14 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         Marca
                       </label>
                       <input
-                        className="mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm rounded-md p-1 border border-gray-300"
+                        className="mt-2 focus:ring-lime-500 focus:border-lime-500 block w-full shadow-sm sm:text-sm rounded-md p-1 border border-gray-300"
                         {...register('brand', {
                           required: 'Este campo es requerido',
                           minLength: { value: 2, message: 'Mínimo 2 caracteres' }
                         })}
                       />
                       <div>
-                        {errors.brand && <span className="text-sm text-red-500">{errors.brand.message}</span>}
+                        {errors.brand && <span className="text-sm text-lime-500">{errors.brand.message}</span>}
                       </div>
                     </div>
 
@@ -225,7 +224,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         Categoría
                       </label>
                       <select
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm capitalize"
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-lime-500 focus:border-lime-500 sm:text-sm capitalize"
                         {...register('category', {
                           required: 'Este campo es requerido',
                         })}
@@ -243,7 +242,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         }
                       </select>
                       <div>
-                        {errors.category && <span className="text-sm text-red-500">{errors.category.message}</span>}
+                        {errors.category && <span className="text-sm text-lime-500">{errors.category.message}</span>}
                       </div>
                     </div>
 
@@ -252,7 +251,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         Sección
                       </label>
                       <select
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm capitalize"
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-lime-500 focus:border-lime-500 sm:text-sm capitalize"
                         {...register('section', {
                           required: 'Este campo es requerido',
                         })}
@@ -270,7 +269,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         }
                       </select>
                       <div>
-                        {errors.category && <span className="text-sm text-red-500">{errors.category.message}</span>}
+                        {errors.category && <span className="text-sm text-lime-500">{errors.category.message}</span>}
                       </div>
                     </div>
 
@@ -279,7 +278,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         Item
                       </label>
                       <select
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm capitalize"
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-lime-500 focus:border-lime-500 sm:text-sm capitalize"
                         {...register('item', {
                           required: 'Este campo es requerido',
                         })}
@@ -297,7 +296,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         }
                       </select>
                       <div>
-                        {errors.item && <span className="text-sm text-red-500">{errors.item.message}</span>}
+                        {errors.item && <span className="text-sm text-lime-500">{errors.item.message}</span>}
                       </div>
                     </div>
 
@@ -306,7 +305,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         Inventario
                       </label>
                       <input
-                        className="mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
+                        className="mt-2 focus:ring-lime-500 focus:border-lime-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
                         type='number'
                         {...register('inStock', {
                           required: 'Este campo es requerido',
@@ -314,7 +313,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         })}
                       />
                       <div>
-                        {errors.inStock && <span className="text-sm text-red-500">{errors.inStock.message}</span>}
+                        {errors.inStock && <span className="text-sm text-lime-500">{errors.inStock.message}</span>}
                       </div>
                     </div>
                     <div className="col-span-6 sm:col-span-3">
@@ -322,7 +321,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         Precio
                       </label>
                       <input
-                        className="mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
+                        className="mt-2 focus:ring-lime-500 focus:border-lime-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
                         type='number'
                         {...register('price', {
                           required: 'Este campo es requerido',
@@ -330,7 +329,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         })}
                       />
                       <div>
-                        {errors.price && <span className="text-sm text-red-500">{errors.price.message}</span>}
+                        {errors.price && <span className="text-sm text-lime-500">{errors.price.message}</span>}
                       </div>
                     </div>
                     <div className="col-span-6 sm:col-span-3">
@@ -339,7 +338,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                       </label>
                       <input
                         type='number'
-                        className="mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
+                        className="mt-2 focus:ring-lime-500 focus:border-lime-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
                         value={0}
                         disabled
                       />
@@ -370,7 +369,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         <div className="flex text-sm text-gray-600">
                           <label
                             htmlFor="file-upload"
-                            className="relative cursor-pointer bg-white rounded-md font-medium text-red-500 hover:text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-red-500"
+                            className="relative cursor-pointer bg-white rounded-md font-medium text-lime-500 hover:text-lime-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-lime-500"
                           >
                             <span>Cargar un archivo</span>
                             <input id="file-upload" name="file-upload" accept="image/png, image/gif, image/jpeg, image/webp" type="file" multiple className="sr-only" onChange={onFileSelected} />
@@ -410,7 +409,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                     <div className="mt-1">
                       <textarea
                         rows={6}
-                        className="shadow-sm focus:ring-red-500 focus:border-red-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1"
+                        className="shadow-sm focus:ring-lime-500 focus:border-lime-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md p-1"
                         {...register('description', {
                           required: 'Este campo es requerido',
                           minLength: { value: 2, message: 'Mínimo 3 caracteres' }
@@ -418,14 +417,14 @@ export const FormHardware: FC<Props> = ({ product }) => {
                       />
                     </div>
                     <div>
-                      {errors.description && <span className="text-sm text-red-500">{errors.description.message}</span>}
+                      {errors.description && <span className="text-sm text-lime-500">{errors.description.message}</span>}
                     </div>
 
                   </div>
 
                   <div className="grid grid-cols-6 gap-6">
 
-                    <div className="col-span-6 sm:col-span-3">
+                    {/* <div className="col-span-6 sm:col-span-3">
                       <fieldset
                       >
                         <legend className="contents text-base font-medium text-gray-900">Tallas</legend>
@@ -436,7 +435,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                                 <input
                                   type="checkbox"
                                   value={data}
-                                  className="focus:ring-red-500 h-4 w-4 text-red-500 border-gray-300"
+                                  className="focus:ring-lime-500 h-4 w-4 text-lime-500 border-gray-300"
                                   {...register('sizes', {
                                     required: {
                                       value: true,
@@ -453,24 +452,24 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         </div>
                       </fieldset>
                       <div>
-                        {errors.sizes?.length === 0 && <span className="text-sm text-red-500">seleccione al menos una talla</span>}
+                        {errors.sizes?.length === 0 && <span className="text-sm text-lime-500">seleccione al menos una talla</span>}
                       </div>
-                    </div>
+                    </div> */}
 
                     <div className="col-span-6 sm:col-span-6">
-                      <label htmlFor="color" className="block text-sm font-medium text-gray-700">
+                      <label htmlFor="weight" className="block text-sm font-medium text-gray-700">
                         Color
                       </label>
                       <input
                         defaultValue={'como se ve en la imagen'}
-                        className="mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
-                        {...register('color', {
+                        className="mt-2 focus:ring-lime-500 focus:border-lime-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
+                        {...register('weight', {
                           required: 'Este campo es requerido',
                           minLength: { value: 2, message: 'Mínimo 2 caracteres' }
                         })}
                       />
                       <div>
-                        {errors.color && <span className="text-sm text-red-500">{errors.color.message}</span>}
+                        {errors.weight && <span className="text-sm text-lime-500">{errors.weight.message}</span>}
                       </div>
                     </div>
                   </div>
@@ -480,7 +479,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                         Tags
                       </label>
                       <input
-                        className="mt-2 focus:ring-red-500 focus:border-red-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
+                        className="mt-2 focus:ring-lime-500 focus:border-lime-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
                         type={"text"}
                         value={newTagValue}
                         onChange={({ target }) => setNewTagValue(target.value)}
@@ -510,7 +509,7 @@ export const FormHardware: FC<Props> = ({ product }) => {
                 <div className="px-4 py-3 bg-white text-right sm:px-6">
                   <button
                     type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lime-500 hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-lime-500"
                   >
                     {
                       product._id ? `Actualizar Producto` : `Crear Producto`

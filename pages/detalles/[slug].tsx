@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { FC, useContext } from 'react';
-import { Category, IClothing, ISeo, Item, Section } from "../../src/interfaces";
+import { Category, IOrganic, ISeo, Item, Section } from "../../src/interfaces";
 import { PBS, PRODUCT_BY_SLUG } from "../../src/gql/query";
 import { ProductOverviews, HeadingPrimary } from "../../components/Components";
 import { Layout } from "../../components/Layout";
@@ -9,7 +9,7 @@ import { SBI } from "../../src/gql/siteQuery";
 import { UiContext } from "../../src/context";
 
 interface SlugPage {
-	product: IClothing
+	product: IOrganic
 	seo: ISeo
 }
 
@@ -28,9 +28,9 @@ const SlugPage: NextPage<SlugPage> = ({ product, seo }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-	const { clothingAll } = await graphQLClientP.request(PBS , {site: `${process.env.API_SITE}`})
+	const { organicAll } = await graphQLClientP.request(PBS , {site: `${process.env.API_SITE}`})
 
-	const paths = clothingAll.map((data: IClothing) => ({
+	const paths = organicAll.map((data: IOrganic) => ({
 		params: { slug: data.slug }
 	}));
 	return {
@@ -42,23 +42,23 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { slug = "" } = params as { slug: string };
 
-	const { clothingBySlug } = await graphQLClientP.request(PRODUCT_BY_SLUG, {slug: `${slug}`, site: `${process.env.API_SITE}`})
+	const { organicBySlug } = await graphQLClientP.request(PRODUCT_BY_SLUG, {slug: `${slug}`, site: `${process.env.API_SITE}`})
 		const { site } = await graphQLClientS.request(SBI, {id: process.env.API_SITE})
 	const res = site.categories.find(findCategory)
 	function findCategory(res:Category){
-		return res.href === `${clothingBySlug.category}`;
+		return res.href === `${organicBySlug.category}`;
 	}
   const re = res.sections.find(findSection)
 	function findSection(re:Section){
-		return re.href === `${clothingBySlug.section}`;
+		return re.href === `${organicBySlug.section}`;
 	}
   const r = re.items.find(findItem)
 	function findItem(r:Item){
-		return r.href === `${clothingBySlug.item}`;
+		return r.href === `${organicBySlug.item}`;
 	}
 	return {
 		props: {
-			product: clothingBySlug,
+			product: organicBySlug,
 			seo: {
         category: {
           name: res.name,
@@ -82,7 +82,7 @@ export default SlugPage;
 
 // import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 // import { useQuery } from "@apollo/client";
-// import { IClothing } from "../../src/interfaces";
+// import { IOrganic } from "../../src/interfaces";
 // import { client } from "../../src/apollo";
 // import { Spinner01, ProductOverviews05 } from "../../components/Components";
 // import { Layout } from "../../components/Layout";
@@ -103,8 +103,8 @@ export default SlugPage;
 // 			title={"- Detalles"}
 // 			pageDescription={"Detalles de los productos"}
 // 		>
-//       <Heading01 category={`${data.clothingBySlug.category}`} section={`${data.clothingBySlug.section}`} item={`${data.clothingBySlug.item}`} name={`${data.clothingBySlug.name}`}/>
-// 			<ProductOverviews05 product={data.clothingBySlug} />
+//       <Heading01 category={`${data.organicBySlug.category}`} section={`${data.organicBySlug.section}`} item={`${data.organicBySlug.item}`} name={`${data.organicBySlug.name}`}/>
+// 			<ProductOverviews05 product={data.organicBySlug} />
 // 		</Layout>
 // 	);
 // };
@@ -113,7 +113,7 @@ export default SlugPage;
 // export const getStaticPaths: GetStaticPaths = async (ctx) => {
 // 	const { data } = await client.query({
 // 	});
-// 	const paths = data.hardwares.map((data: IClothing) => ({
+// 	const paths = data.hardwares.map((data: IOrganic) => ({
 // 		params: { slug: data.slug }
 // 	}));
 // 	return {
