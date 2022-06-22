@@ -458,14 +458,14 @@ export const FormHardware: FC<Props> = ({ product }) => {
 
                     <div className="col-span-6 sm:col-span-6">
                       <label htmlFor="weight" className="block text-sm font-medium text-gray-700">
-                        Color
+                        Peso
                       </label>
                       <input
                         defaultValue={'como se ve en la imagen'}
                         className="mt-2 focus:ring-lime-500 focus:border-lime-500 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md p-1"
                         {...register('weight', {
                           required: 'Este campo es requerido',
-                          minLength: { value: 2, message: 'Mínimo 2 caracteres' }
+                          minLength: { value: 1, message: 'Mínimo 2 caracteres' }
                         })}
                       />
                       <div>
